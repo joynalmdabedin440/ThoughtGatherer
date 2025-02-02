@@ -5,33 +5,31 @@ import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
     const [theme, setTheme] = useState("light");
-
-    useEffect(() => {
-
-        localStorage.setItem("theme", theme);
-        const storedTheme = localStorage.getItem("theme");
-        document.querySelector('html').setAttribute("data-theme", storedTheme);
+   
+   
+    const handleThemeChange = (e) => { 
        
-
-    }, [theme]);
-
-
-    const handleThemeChange = (e) => {
-
+        
         setTheme(e.target.checked ? "dark" : "light");
-
-
     }
+    useEffect(() => {
+        localStorage.setItem("theme", theme)
+        const localTheme = localStorage.getItem('theme')
+
+        document.querySelector("html").setAttribute("data-theme", localTheme)
+        
+
+    },[theme])
 
 
 
     return (
-        <div className="navbar pl-0   bg-base-100 shadow-lg px-4 sticky">
+        <div className="navbar pl-0   bg-base-100 shadow-lg px-4 fixed z-10">
             <div className="flex-1">
                 <Link to="/" className="btn btn-ghost text-2xl font-bold text-secondary gap-0 ">Thought<span className="text-primary">Gatherer</span></Link>
             </div>
             <div className="flex-none">
-                <ul className="menu menu-horizontal px-1 font-semibold text-lg">
+                <ul className="menu  menu-horizontal px-1 font-semibold text-lg">
                     <li><NavLink to="/" className={({ isActive }) =>
                         isActive ? "text-primary" : ""
                     }>Home</NavLink> </li>
