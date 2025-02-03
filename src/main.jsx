@@ -11,14 +11,15 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />} >
-          
+
           <Route path='/' element={<Home />} />
 
           <Route path='blogs' element={<Blogs></Blogs>} />
+
           <Route path='bookmarks' element={<div>Bookmarks</div>} />
-        
+
         </Route>
-        
+
       </Routes>
     </BrowserRouter>
   </StrictMode>,
