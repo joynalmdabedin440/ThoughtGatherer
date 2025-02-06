@@ -5,7 +5,7 @@ import rehypeRaw from "rehype-raw";
 
 const Content = () => {
     const { blog } = useOutletContext()
-    const { title, tags, cover_image, body_html } = blog
+    const { title, tags, cover_image, body_html,url } = blog
     //console.log(blog);
 
 
@@ -30,7 +30,7 @@ const Content = () => {
                         </div>
                     </div>
                     <div className="space-y-2">
-                        <a rel="noopener noreferrer" href="#" className="block">
+                        <a rel="noopener noreferrer" href={url} target="_blank"  className="block">
                             <h3 className="text-2xl font-semibold text-default-600">{title}</h3>
                         </a>
                         <div>

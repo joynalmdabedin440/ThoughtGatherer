@@ -21,7 +21,7 @@ const Blog = ({ blog, isBookmarks, removeBookmarksHandle }) => {
                         </div>
                         <div className="space-y-2">
                             <Link to="" rel="noopener noreferrer" className="block">
-                                <h3 className="text-xl font-semibold  dark:text-default-600 hover:underline">{title}</h3>
+                                <h3 className="text-xl font-semibold  dark:text-default-600 ">{title}</h3>
                             </Link>
                             <p className="leading-snug   dark:text-gray-600">{description}</p>
                         </div>
