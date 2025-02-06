@@ -1,25 +1,49 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link, Outlet, useParams } from "react-router";
-import Author from "./Author";
+import Loader from "./Loader";
+
+
 
 const BlogDetails = () => {
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const [activeTab, setActiveTab] = useState(0);
     const [blog, setBlog] = useState({});
 
     const blogId = useParams().blogId;
 
+
+
     useEffect(() => {
-        fetch(`https://dev.to/api/articles/${blogId}`)
-            .then(res => res.json())
-            .then(data => setBlog(data))
+        try {
+            fetch(`https://dev.to/api/articles/${blogId}`)
+                .then(res => res.json())
+
+                .then(data => setBlog(data))
+        }
+        catch (error) {
+            console.log(error);
+        }
+        finally {
+            setIsLoading(false);
+        }
+
+
+
     }, [])
+
     // console.log(blog);
 
 
-    const { title, comments_count, reading_time_minutes, public_reactions_count, published_at,tags } = blog
+    const { title, comments_count, reading_time_minutes, public_reactions_count, published_at } = blog
 
+    if (isLoading) {
+        console.log("loading",title)
+        return <Loader />
+
+    }
 
 
     return (
@@ -62,16 +86,16 @@ const BlogDetails = () => {
                             </svg>
                             <span>Author</span>
                         </Link>
-                        
-                        
+
+
                     </div>
                 </div>
                 <div className="dark:text-gray-100">
-                    <Outlet context={{blog}} />
+                    <Outlet context={{ blog }} />
 
                 </div>
             </article>
-           
+
         </div>
     );
 };
