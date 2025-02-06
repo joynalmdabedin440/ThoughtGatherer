@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Home from './components/Home.jsx';
 import Blogs from './components/Blogs.jsx';
 import BlogDetails from './components/BlogDetails.jsx';
+import Content from './components/Content.jsx';
+import Author from './components/Author.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -18,7 +20,12 @@ createRoot(document.getElementById('root')).render(
 
           <Route path='/blogs' element={<Blogs></Blogs>}></Route>
           
-          <Route path="/blog/:blogId" element={<BlogDetails/>} ></Route>
+          <Route path="/blog/:blogId" element={<BlogDetails />} >
+            <Route path="" element={<Content></Content>}></Route>
+            <Route path="author" element={<Author/>}/>
+          
+          
+          </Route>
 
           <Route path='bookmarks' element={<div>Bookmarks</div>} />
 
