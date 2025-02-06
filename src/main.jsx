@@ -5,6 +5,8 @@ import App from './App.jsx'
 import { BrowserRouter, Route, Routes } from "react-router";
 import Home from './components/Home.jsx';
 import Blogs from './components/Blogs.jsx';
+import BlogDetails from './components/BlogDetails.jsx';
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -14,7 +16,9 @@ createRoot(document.getElementById('root')).render(
 
           <Route path='/' element={<Home />} />
 
-          <Route path='blogs' element={<Blogs></Blogs>} />
+          <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+          
+          <Route path="/blog/:blogId" element={<BlogDetails/>} ></Route>
 
           <Route path='bookmarks' element={<div>Bookmarks</div>} />
 
