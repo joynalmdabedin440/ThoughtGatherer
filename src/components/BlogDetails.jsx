@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, Outlet, useParams } from "react-router";
 import Loader from "./Loader";
+import { MdBookmarkAdd } from "react-icons/md";
+import { setBlogItem } from "../utilities/LocalStorage";
 
 
 
@@ -37,11 +39,16 @@ const BlogDetails = () => {
     // console.log(blog);
 
 
-    const { title, comments_count, reading_time_minutes, public_reactions_count, published_at } = blog
+    const { title, comments_count, reading_time_minutes, public_reactions_count, published_at,id } = blog
 
     if (isLoading) {
-        console.log("loading",title)
         return <Loader />
+
+    }
+
+    const bookMarksHandle = (blog) => { 
+        setBlogItem(blog);
+
 
     }
 
@@ -86,6 +93,13 @@ const BlogDetails = () => {
                             </svg>
                             <span>Author</span>
                         </Link>
+
+                        {/* BookMarks */}
+                        <div onClick={()=>bookMarksHandle(blog)} className="rounded-full p-3 ml-3 m-1  bg-blue-200
+                        hover:bg-blue-300   
+                         hover:scale-105   cursor-pointer  ">
+                            <MdBookmarkAdd size={30} className="text-secondary" />
+                        </div>
 
 
                     </div>

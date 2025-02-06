@@ -6,7 +6,7 @@ import rehypeRaw from "rehype-raw";
 const Content = () => {
     const { blog } = useOutletContext()
     const { title, tags, cover_image, body_html } = blog
-    console.log(blog);
+    //console.log(blog);
 
 
 

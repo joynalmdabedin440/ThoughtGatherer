@@ -8,6 +8,8 @@ import Blogs from './components/Blogs.jsx';
 import BlogDetails from './components/BlogDetails.jsx';
 import Content from './components/Content.jsx';
 import Author from './components/Author.jsx';
+import Bookmarks from './components/Bookmarks.jsx';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 createRoot(document.getElementById('root')).render(
@@ -27,11 +29,12 @@ createRoot(document.getElementById('root')).render(
           
           </Route>
 
-          <Route path='bookmarks' element={<div>Bookmarks</div>} />
+          <Route path='bookmarks' element={<Bookmarks/>} />
 
         </Route>
 
       </Routes>
     </BrowserRouter>
+    <ToastContainer />
   </StrictMode>,
 )
